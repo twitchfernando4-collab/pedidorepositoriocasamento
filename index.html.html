@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Pedido Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Use min-height para garantir que o conteúdo não corte em telas menores */
+            margin: 0;
+            background-color: #f8f8ff;
+            text-align: center;
+            color: #4b0082;
+            padding: 20px;
+            overflow-x: hidden; /* Para evitar barra de rolagem horizontal se as polaroides se moverem muito */
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative; /* Para posicionar as polaroides em relação a este elemento */
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            z-index: 10; /* Para garantir que o texto fique acima das polaroides */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #8a2be2;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2e8b57;
+        }
+
+        /* Estilos para as polaroides */
+        .polaroid {
+            position: absolute;
+            background-color: white;
+            padding: 10px 10px 25px 10px; /* Mais espaço embaixo para a "borda" da polaroid */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            transform: rotate(var(--rotation, 0deg)); /* Rotação variável */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 5; /* Abaixo do conteúdo principal */
+        }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(var(--rotation, 0deg)); /* Leve aumento ao passar o mouse */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            z-index: 15; /* Traz para a frente ao passar o mouse */
+        }
+
+        .polaroid img {
+            max-width: 150px; /* Tamanho da imagem dentro da polaroid */
+            height: auto;
+            display: block; /* Remove espaço extra abaixo da imagem */
+        }
+
+        /* Posicionamento individual das polaroides */
+        .polaroid-1 { top: 10%; left: 10%; --rotation: -10deg; }
+        .polaroid-2 { top: 30%; right: 10%; --rotation: 8deg; }
+        .polaroid-3 { bottom: 15%; left: 20%; --rotation: 5deg; }
+        .polaroid-4 { top: 60%; right: 20%; --rotation: -12deg; }
+        /* Ajuste as porcentagens e rotações para um posicionamento que você goste */
+
+        /* Media Queries para telas menores */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+                max-width: 90%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .polaroid {
+                display: none; /* Esconde as polaroides em telas muito pequenas para não atrapalhar */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Meu Amor,</h1>
+            <p>Simplesmente, você vem extraindo o melhor de mim, sendo o meu pilar e me ajudando a me estruturar.</p>
+            <p>Você é uma mulher usada por Deus e colocada por Ele na minha vida; pode ter certeza — com toda certeza eu lhe digo: você é uma mulher da minha vida. É contigo que vou construir uma família, realizar sonhos e comemorar conquistas.</p>
+            
+            <p>Eu te amo infinitamente, meu bem.</p>
+
+            <div class="button-container">
+                <button onclick="showAcceptMessage()">Você aceita casar comigo?</button>
+            </div>
+
+            <div id="message"></div>
+        </div>
+
+        <div class="polaroid polaroid-1">
+            <img src="file:///C:/Users/User/Documents/site%20do%20pedido%20de%20casamento/imagem1.png.jpg" alt="EU TE AMO INFINITAMENTE">
+        </div>
+        <div class="polaroid polaroid-2">
+            <img src="file:///C:/Users/User/Documents/site%20do%20pedido%20de%20casamento/imagem2.png.jpg" alt="Foto de vocês 2">
+        </div>
+        <div class="polaroid polaroid-3">
+            <img src="file:///C:/Users/User/Documents/site%20do%20pedido%20de%20casamento/imagem3.png.HEIC" alt="Foto de vocês 3">
+        </div>
+        <div class="polaroid polaroid-4">
+            <img src="file:///C:/Users/User/Downloads/IMG_0239.jpg" alt="Foto de vocês 4">
+        </div>
+
+    </div>
+
+    <script>
+        function showAcceptMessage() {
+            const messageElement = document.getElementById('message');
+            messageElement.style.color = '#2e8b57';
+            messageElement.innerHTML = "Eba! Enfim, estamos passando para a próxima etapa.";
+
+            const buttonElement = document.querySelector('button');
+            buttonElement.style.display = 'none'; // Esconde o botão após o clique
+        }
+    </script>
+
+</body>
+</html>
